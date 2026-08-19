@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+* Bump `python-octaviaclient` dependency to version 3.11, to fix "Invalid formatter provided" error on `openstack loadbalancer create`.
+
 ## Version 0.0.9 (2026-07-17)
 
 * Maintenance release, solely for pushing the updated README to PyPI.
