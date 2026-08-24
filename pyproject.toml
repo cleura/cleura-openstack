@@ -168,7 +168,7 @@ indent-size = 2
 
 [tool.bumpversion]
 commit = true
-current_version = "0.0.9"
+current_version = "0.0.10"
 message = "build: Version {new_version}"
 tag = true
 
