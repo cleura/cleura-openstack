@@ -6,6 +6,25 @@ name: 'Build and test Python package'
   - pull_request
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v6
+        with:
+          # Checkout a pull request's HEAD commit instead of the merge
+          # commit, so that gitlint lints the correct commit message.
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Set up Python
+        uses: actions/setup-python@v6
+      - name: Install dependencies
+        run: |
+          pip install tox
+      - name: Run linters
+        run: tox -e gitlint,yamllint,markdownlint
+
   build:
     runs-on: ubuntu-latest
     strategy:
