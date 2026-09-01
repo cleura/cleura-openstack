@@ -425,3 +425,1267 @@ class TestShellIntegration:
         )
         assert result.returncode == 0
         assert "usage: cleura-openstack" in result.stdout.lower()
+
+
+class TestOpenStackCloud:
+    """Tests that require a real OpenStack cloud (OS_CLOUD env var)."""
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_token_issue(self):
+        """Issue a token via the openstack CLI."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "token", "issue"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_quota_show(self):
+        """Show quotas via the openstack CLI."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "quota", "show"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_access_rule_list(self):
+        """List all via openstack access rule."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "access", "rule", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_address_group_list(self):
+        """List all via openstack address group."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "address", "group", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_address_scope_list(self):
+        """List all via openstack address scope."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "address", "scope", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_application_credential_list(self):
+        """List all via openstack application credential."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "application", "credential", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_availability_zone_list(self):
+        """List all via openstack availability zone."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "availability", "zone", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_backup_action_list(self):
+        """List all via openstack backup action."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "backup", "action", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_backup_client_list(self):
+        """List all via openstack backup client."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "backup", "client", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_backup_job_list(self):
+        """List all via openstack backup job."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "backup", "job", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_backup_list(self):
+        """List all via openstack backup."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "backup", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_backup_session_list(self):
+        """List all via openstack backup session."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "backup", "session", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_bgp_dragent_list(self):
+        """List all via openstack bgp dragent."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "bgp", "dragent", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_block_storage_resource_filter_list(self):
+        """List all via openstack block storage resource filter."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "block", "storage", "resource", "filter", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_catalog_list(self):
+        """List all via openstack catalog."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "catalog", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_command_list(self):
+        """List all via openstack command."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "command", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_consistency_group_list(self):
+        """List all via openstack consistency group."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "consistency", "group", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_consistency_group_snapshot_list(self):
+        """List all via openstack consistency group snapshot."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "consistency", "group", "snapshot", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_container_list(self):
+        """List all via openstack container."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "container", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_credential_list(self):
+        """List all via openstack credential."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "credential", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_default_security_group_rule_list(self):
+        """List all via openstack default security group rule."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "default", "security", "group", "rule", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_dns_quota_list(self):
+        """List all via openstack dns quota."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "dns", "quota", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_ec2_credentials_list(self):
+        """List all via openstack ec2 credentials."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "ec2", "credentials", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_extension_list(self):
+        """List all via openstack extension."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "extension", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_federation_domain_list(self):
+        """List all via openstack federation domain."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "federation", "domain", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_federation_project_list(self):
+        """List all via openstack federation project."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "federation", "project", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_flavor_list(self):
+        """List all via openstack flavor."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "flavor", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_floating_ip_list(self):
+        """List all via openstack floating ip."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "floating", "ip", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_image_list(self):
+        """List all via openstack image."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "image", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_image_metadef_namespace_list(self):
+        """List all via openstack image metadef namespace."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "image", "metadef", "namespace", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_image_metadef_resource_type_list(self):
+        """List all via openstack image metadef resource type."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "image", "metadef", "resource", "type", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_image_stores_list(self):
+        """List all via openstack image stores."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "image", "stores", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_ip_availability_list(self):
+        """List all via openstack ip availability."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "ip", "availability", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_keypair_list(self):
+        """List all via openstack keypair."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "keypair", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_limit_list(self):
+        """List all via openstack limit."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "limit", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_loadbalancer_availabilityzone_list(self):
+        """List all via openstack loadbalancer availabilityzone."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "loadbalancer", "availabilityzone", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_loadbalancer_flavor_list(self):
+        """List all via openstack loadbalancer flavor."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "loadbalancer", "flavor", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_loadbalancer_healthmonitor_list(self):
+        """List all via openstack loadbalancer healthmonitor."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "loadbalancer", "healthmonitor", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_loadbalancer_l7policy_list(self):
+        """List all via openstack loadbalancer l7policy."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "loadbalancer", "l7policy", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_loadbalancer_list(self):
+        """List all via openstack loadbalancer."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "loadbalancer", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_loadbalancer_listener_list(self):
+        """List all via openstack loadbalancer listener."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "loadbalancer", "listener", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_loadbalancer_pool_list(self):
+        """List all via openstack loadbalancer pool."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "loadbalancer", "pool", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_loadbalancer_provider_list(self):
+        """List all via openstack loadbalancer provider."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "loadbalancer", "provider", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_loadbalancer_quota_list(self):
+        """List all via openstack loadbalancer quota."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "loadbalancer", "quota", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_module_list(self):
+        """List all via openstack module."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "module", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_network_agent_list(self):
+        """List all via openstack network agent."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "network", "agent", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_network_flavor_list(self):
+        """List all via openstack network flavor."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "network", "flavor", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_network_flavor_profile_list(self):
+        """List all via openstack network flavor profile."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "network", "flavor", "profile", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_network_list(self):
+        """List all via openstack network."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "network", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_network_qos_policy_list(self):
+        """List all via openstack network qos policy."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "network", "qos", "policy", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_network_qos_rule_type_list(self):
+        """List all via openstack network qos rule type."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "network", "qos", "rule", "type", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_network_rbac_list(self):
+        """List all via openstack network rbac."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "network", "rbac", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_network_service_provider_list(self):
+        """List all via openstack network service provider."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "network", "service", "provider", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_network_trunk_list(self):
+        """List all via openstack network trunk."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "network", "trunk", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_orchestration_resource_type_list(self):
+        """List all via openstack orchestration resource type."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "orchestration", "resource", "type", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_orchestration_template_version_list(self):
+        """List all via openstack orchestration template version."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "orchestration", "template", "version", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_port_list(self):
+        """List all via openstack port."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "port", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_project_list(self):
+        """List all via openstack project."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "project", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_ptr_record_list(self):
+        """List all via openstack ptr record."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "ptr", "record", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_region_list(self):
+        """List all via openstack region."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "region", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_registered_limit_list(self):
+        """List all via openstack registered limit."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "registered", "limit", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_router_list(self):
+        """List all via openstack router."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "router", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_secret_container_list(self):
+        """List all via openstack secret container."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "secret", "container", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_secret_list(self):
+        """List all via openstack secret."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "secret", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_secret_order_list(self):
+        """List all via openstack secret order."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "secret", "order", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_security_group_list(self):
+        """List all via openstack security group."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "security", "group", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_security_group_rule_list(self):
+        """List all via openstack security group rule."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "security", "group", "rule", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_server_group_list(self):
+        """List all via openstack server group."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "server", "group", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_server_list(self):
+        """List all via openstack server."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "server", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_software_config_list(self):
+        """List all via openstack software config."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "software", "config", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_software_deployment_list(self):
+        """List all via openstack software deployment."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "software", "deployment", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_stack_list(self):
+        """List all via openstack stack."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "stack", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_subnet_list(self):
+        """List all via openstack subnet."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "subnet", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_subnet_pool_list(self):
+        """List all via openstack subnet pool."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "subnet", "pool", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_volume_attachment_list(self):
+        """List all via openstack volume attachment."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "volume", "attachment", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_volume_group_snapshot_list(self):
+        """List all via openstack volume group snapshot."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "volume", "group", "snapshot", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_volume_list(self):
+        """List all via openstack volume."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "volume", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_volume_snapshot_list(self):
+        """List all via openstack volume snapshot."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "volume", "snapshot", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_volume_transfer_request_list(self):
+        """List all via openstack volume transfer request."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "volume", "transfer", "request", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_volume_type_list(self):
+        """List all via openstack volume type."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "volume", "type", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_zone_export_list(self):
+        """List all via openstack zone export."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "zone", "export", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_zone_import_list(self):
+        """List all via openstack zone import."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "zone", "import", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_zone_list(self):
+        """List all via openstack zone."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "zone", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
+
+    @pytest.mark.skipif(
+        not os.environ.get("OS_CLOUD"),
+        reason="OS_CLOUD environment variable is not set",
+    )
+    def test_zone_transfer_request_list(self):
+        """List all via openstack zone transfer request."""
+        path = _script_path("openstack")
+        result = subprocess.run(
+            [path, "zone", "transfer", "request", "list"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0
