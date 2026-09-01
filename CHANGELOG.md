@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+* Add a set of unit tests to catch regressions in dependencies.
+
 ## Version 0.0.10 (2026-08-24)
 
 * Bump `python-octaviaclient` dependency to version 3.11, to fix "Invalid formatter provided" error on `openstack loadbalancer create`.

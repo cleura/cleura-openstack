@@ -58,6 +58,9 @@ Changelog = "https://github.com/cleura/cleura-openstackclient/blob/main/CHANGELO
 PyPI = "https://pypi.org/project/cleura-openstackclient/"
 
 [dependency-groups]
+pytest = [
+    "pytest",
+]
 flake8 = [
     "flake8",
     "flake8-pyproject"
@@ -89,8 +92,11 @@ env_list = ["yamllint", "markdownlint", "3.14", "3.13", "3.12", "3.11", "3.10"]
 
 [tool.tox.env_run_base]
 description = "Run tests under {base_python}"
-commands = [["flake8"]]
-dependency_groups = ["flake8"]
+commands = [
+    ["flake8"],
+    ["python", "-m", "pytest", "tests/", "-v", { replace = "posargs", extend = true}]
+]
+dependency_groups = ["flake8", "pytest"]
 
 [tool.tox.env.gitlint]
 skip_install = true
@@ -163,6 +169,7 @@ dependency_groups = [
 max-line-length = 180
 statistics = true
 indent-size = 2
+exclude = [".tox", ".*egg-info", "build", "dist"]
 
 [tool.setuptools_scm]
 
