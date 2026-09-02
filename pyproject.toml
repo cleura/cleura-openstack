@@ -102,7 +102,7 @@ dependency_groups = ["flake8", "pytest"]
 [tool.tox.env.gitlint]
 skip_install = true
 description = "Check Git commit message"
-commands = [["gitlint"]]
+commands = [["gitlint", { replace = "posargs", extend = true}]]
 dependency_groups = [
     "gitlint",
 ]

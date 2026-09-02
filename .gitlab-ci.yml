@@ -1,0 +1,91 @@
+---
+stages:
+  - lint
+  - test
+  - build
+  - check
+
+before_script:
+  - pip install tox
+
+variables:
+  PIP_NO_CACHE_DIR: "1"
+
+gitlint:
+  stage: lint
+  image: python:3.14
+  script:
+    - tox -e gitlint -- --commits "$CI_MERGE_REQUEST_COMMIT"
+  rules:
+    - if: $CI_MERGE_REQUEST_IID
+      variables:
+        CI_MERGE_REQUEST_COMMIT: $CI_MERGE_REQUEST_SOURCE_BRANCH_SHA
+    - if: $CI_COMMIT_BRANCH
+      when: always
+
+yamllint:
+  stage: lint
+  image: python:3.14
+  script:
+    - tox -e yamllint
+  rules:
+    - when: always
+
+markdownlint:
+  stage: lint
+  image: python:3.14
+  script:
+    - tox -e markdownlint
+  rules:
+    - when: always
+
+
+test:
+  stage: test
+  image: python:$PYTHON_VERSION
+  parallel:
+    matrix:
+      - PYTHON_VERSION:
+          - "3.10"
+          - "3.11"
+          - "3.12"
+          - "3.13"
+          - "3.14"
+  script:
+    - tox
+
+
+build-package:
+  stage: build
+  image: python:3.14
+  script:
+    - tox -e build
+  artifacts:
+    paths:
+      - dist/
+  rules:
+    - when: on_success
+
+
+install-check:
+  stage: check
+  image: python:$PYTHON_VERSION
+  variables:
+    PIP_BREAK_SYSTEM_PACKAGES: "1"
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+      when: always
+    - if: $CI_PIPELINE_SOURCE == "web"
+      when: always
+    - when: never
+  parallel:
+    matrix:
+      - PYTHON_VERSION:
+          - "3.10"
+          - "3.11"
+          - "3.12"
+          - "3.13"
+          - "3.14"
+  script:
+    - pip install pipdeptree "cleura-openstackclient"
+    - pipdeptree
