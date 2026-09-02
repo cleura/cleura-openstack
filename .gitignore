@@ -2,3 +2,4 @@
 .eggs
 *.egg-info/
 .ai
+**/__pycache__
