@@ -176,7 +176,7 @@ exclude = [".tox", ".*egg-info", "build", "dist"]
 
 [tool.bumpversion]
 commit = true
-current_version = "0.0.10"
+current_version = "0.0.11"
 message = "build: Version {new_version}"
 tag = true
 

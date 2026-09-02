@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## Version 0.0.11 (2026-09-02)
 
 * Add a set of unit tests to catch regressions in dependencies.
 
