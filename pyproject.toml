@@ -27,7 +27,7 @@ dependencies = [
     "python-barbicanclient<7.2.0",
     "python-cinderclient<9.8.0",
     "python-designateclient<6.3.0",
-    "python-freezerclient>=6.4.0,<6.5.0",
+    "python-freezerclient>=6.4.0,<6.6.0",
     "python-glanceclient<4.9.0",
     "python-heatclient>=4.2.0,<4.3.0",
     "python-keystoneclient<5.7.0",

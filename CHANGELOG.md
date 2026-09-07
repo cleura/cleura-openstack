@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+* Bump the `python-freezerclient` dependency to allow installing version 6.5.x.
+
 ## Version 0.0.11 (2026-09-02)
 
 * Add a set of unit tests to catch regressions in dependencies.
