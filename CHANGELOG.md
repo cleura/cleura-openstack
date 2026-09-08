@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## Version 0.0.12 (2026-09-08)
 
 * Bump the `python-freezerclient` dependency to allow installing version 6.5.x.
 
